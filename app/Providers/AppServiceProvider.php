@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
+use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Blade;
+// use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,7 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Blade::component('components.alert', 'alert');
+        // Blade::component('components.alert', 'alert');
+        Carbon::setLocale('zh');
         //Blade::withoutDoubleEncoding();
     }
 
