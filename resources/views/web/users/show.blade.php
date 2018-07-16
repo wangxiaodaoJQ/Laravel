@@ -13,19 +13,18 @@
                  width="300px" height="300px"
                  alt="个人头像">
             <hr>
-            <h5 class="card-title">wp简介</h5>
-            <p class="card-text"></p>
+            <h5 class="card-title">{{ $user->name }}简介</h5>
+            <p class="card-text">{{ $user->introduction }}</p>
             <hr>
             <h5><strong>注册于</strong></h5>
-            <p>10天前</p>
+            <p>{{ $user->created_at }}</p>
           </div>
         </div>
       </div>
       <div class="col-lg col-lg-9 col-md-9 col-sm-12">
         <div class="card">
           <div class="card-body">
-                  王鹏
-            <small>wp782452336@qq.com</small>
+            <small>{{ $user->email }}</small>
           </div>
         </div>
 

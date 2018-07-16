@@ -51,7 +51,7 @@
              <a href="{{ route('users.show', Auth::id()) }}" class="dropdown-item">
                 <i class="fa fa-user"></i> 个人中心
               </a>
-              <a href="#" class="dropdown-item">
+              <a href="{{ route('users.edit', Auth::id()) }}" class="dropdown-item">
                 <i class="fa fa-edit"></i> 编辑资料
               </a>
               <a href="{{ route('logout') }}" class="dropdown-item"
