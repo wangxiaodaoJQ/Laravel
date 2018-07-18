@@ -25,7 +25,7 @@
 <div id="app" class="{{ route_class() }}-page">
   @include('web.layouts._header')
 
-  <main class="lbs-main">
+  <main class="easyedu-main">
     @include('web.layouts._message')
     @yield('content')
   </main>

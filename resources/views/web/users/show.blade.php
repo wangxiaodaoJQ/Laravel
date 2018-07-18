@@ -9,7 +9,7 @@
         <div class="card">
           <div class="card-body">
             <img class="card-img-top img-thumbnail"
-                 src="http://pbfa6u6aq.bkt.clouddn.com/image/user/avatar/Ji3ohCho5Quov5UL.jpg"
+                 src="{{ $user->avatar }}"
                  width="300px" height="300px"
                  alt="个人头像">
             <hr>
@@ -17,13 +17,14 @@
             <p class="card-text">{{ $user->introduction }}</p>
             <hr>
             <h5><strong>注册于</strong></h5>
-            <p>{{ $user->created_at }}</p>
+            <p>{{ $user->created_at->diffForHumans() }}</p>
           </div>
         </div>
       </div>
       <div class="col-lg col-lg-9 col-md-9 col-sm-12">
         <div class="card">
           <div class="card-body">
+            {{ ucwords($user->name) }}
             <small>{{ $user->email }}</small>
           </div>
         </div>

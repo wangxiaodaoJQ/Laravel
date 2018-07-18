@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\UserFormRequest;
+use App\Handlers\ImageHandler;
 
 class UsersController extends Controller
 {
@@ -42,6 +43,7 @@ class UsersController extends Controller
      *
      * @param \App\Http\Requests\Web\UserFormRequest $request
      * @param \App\Models\User                       $user
+     * @param \App\Handlers\ImageHandler             $handler
      *
      * @return \Illuminate\Http\RedirectResponse
      *
@@ -49,11 +51,15 @@ class UsersController extends Controller
      */
     public function update(
         UserFormRequest $request,
-        User $user
+        User $user,
+        ImageHandler $handler
     ) {
         $data = $request->all();
         if ($request->avatar) {
-            // TODO: 后期补充。
+            $result = $handler->upload($request->avatar, 'avatars', $user->id, 365);
+            if ($result) {
+                $data['avatar'] = $result['path'];
+            }
         }
         $user->update($data);
         return redirect()
