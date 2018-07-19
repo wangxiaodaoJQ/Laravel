@@ -38,6 +38,7 @@ class UsersController extends Controller
         // $this->authorize('update', $user);
         return view('web.users.edit', compact('user'));
     }
+    
     /**
      * 用户更新操作。
      *
