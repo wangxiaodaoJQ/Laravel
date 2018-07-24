@@ -12,7 +12,7 @@ class ImageHandler
      *
      * @var array
      */
-    protected static $allowedExt = ["png", "jpg", "gif", 'jpeg'];
+    protected static $allowedExt = ['png', 'jpg', 'gif', 'jpeg'];
 
     /**
      * 上传图片。
