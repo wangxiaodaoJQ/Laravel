@@ -25,6 +25,12 @@ Route::group(['namespace' => 'Web'], function () {
     Route::get('/home', 'DefaultsController@index')->name('home');
 
 
-   // 用户中心。
+    // 用户中心。
     Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
+
+    // 话题分类。
+    Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
+    
+    // 用户话题。
+    Route::resource('topics', 'TopicsController');
 });
