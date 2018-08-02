@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Traits\OrderTrait;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Topic extends Model
 {
+    use OrderTrait;
+
     protected $fillable = [
         'title',
         'body',
@@ -35,14 +39,14 @@ class Topic extends Model
         return $this->belongsTo(Category::class);
     }
 
-    /**
-    * 话题排序。
-    *
-    * @param \Illuminate\Database\Eloquent\Builder $builder
-    * @param null                                  $order
-    *
-    * @return \Illuminate\Database\Eloquent\Builder
-    */
+     /**
+     * 话题排序。
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $builder
+     * @param null                                  $order
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
     public function scopeWithOrder(Builder $builder, $order = null)
     {
         if ($order === 'recent') {

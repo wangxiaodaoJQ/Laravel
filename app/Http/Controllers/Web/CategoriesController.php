@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -23,6 +23,7 @@ class CategoriesController extends Controller
         $topics = $topic->withOrder($request->order)
             ->where('category_id', $category->id)
             ->paginate(20);
+            
         return view('web.topics.index', compact(
             'topics',
             'category'
