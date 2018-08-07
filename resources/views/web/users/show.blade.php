@@ -34,13 +34,14 @@
             <ul class="nav nav-tabs">
               <li class="nav-item">
                 <a href="{{ route('users.show', $user->id) }}"
-                   class="nav-link active">Ta 论思想的重要性</a>
+                   class="nav-link active">Ta 话题</a>
               </li>
               <li class="nav-item">
                 <a href="{{ route('users.show', [$user->id, 'tab' => 'replies']) }}"
-                   class="nav-link ">Ta 有什么样的思想和行为，你就成为什么样人！</a>
+                   class="nav-link ">Ta 回复</a>
               </li>
             </ul>
+            @include('web.users._topics', ['topics' => $user->topics()->withOrder('recent')->paginate(5)])
           </div>
         </div>
       </div>

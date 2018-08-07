@@ -13,7 +13,7 @@ class TopicFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
     
     /**
@@ -23,8 +23,36 @@ class TopicFormRequest extends FormRequest
      */
     public function rules()
     {
+        switch ($this->method()) {
+            case 'POST':
+            case 'PUT':
+            case 'PATCH':
+                {
+                    return [
+                        'title'       => 'required|min:3',
+                        'body'        => 'required|min:6',
+                        'category_id' => 'required|numeric',
+                    ];
+                }
+            case 'GET':
+            case 'DELETE':
+            default:
+                return [];
+        }
+    }
+
+    /**
+     * Get the validation messages that violate the rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
         return [
-            //
+            'title.min'            => '标题 必须至少三个字符。',
+            'body.min'             => '文章内容 必须至少六个字符。',
+            'body.required'        => '内容 不能为空。',
+            'category_id.required' => '分类 必须选择。',
         ];
     }
 }
