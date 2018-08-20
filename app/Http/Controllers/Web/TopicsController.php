@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Handlers\ImageHandler;
 use App\Http\Requests\Web\TopicFormRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -108,5 +109,31 @@ class TopicsController extends Controller
      */
     public function destroy(Topic $topic)
     {
+    }
+
+    /**
+     * 上传话题图片操作。
+     *
+     * @param \Illuminate\Http\Request   $request
+     * @param \App\Handlers\ImageHandler $handler
+     *
+     * @return array
+     */
+    public function upload(Request $request, ImageHandler $handler)
+    {
+        $data = [
+            'status' => false,
+            'msg'    => '上传失败！',
+            'path'   => '',
+        ];
+         if ($file = $request->uploader) {
+            $result = $handler->upload($request->uploader, 'topics', Auth::id(), 1024);
+             if ($result) {
+                $data['status'] = true;
+                $data['msg'] = '上传成功！';
+                $data['path'] = $result['path'];
+            }
+        }
+         return $data;
     }
 }

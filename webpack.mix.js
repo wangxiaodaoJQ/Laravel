@@ -12,4 +12,6 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/frontend/js/app.js', 'public/frontend/js')
-   .sass('resources/assets/frontend/sass/app.scss', 'public/frontend/css');
+   .sass('resources/assets/frontend/sass/app.scss', 'public/frontend/css')
+   .copyDirectory('resources/assets/vendor/simditor/js', 'public/vendor/simditor/js')
+   .copyDirectory('resources/assets/vendor/simditor/css', 'public/vendor/simditor/css');
